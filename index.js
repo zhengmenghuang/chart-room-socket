@@ -1,4 +1,8 @@
-﻿const app = require('express')();
+﻿const express = require('express');
+const app = express();
+
+// 添加静态资源目录
+app.use(express.static('static'))
 
 const https = require('https');
 const fs = require('fs');
@@ -10,7 +14,7 @@ const port = 6001;
 
 const server = https.Server(httpsOption, app);
 
-// 本地开发
+// // 本地开发
 // const http = require('http');
 // const port = 6001;
 // const server = http.Server(app);
