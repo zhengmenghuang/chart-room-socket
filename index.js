@@ -23,7 +23,7 @@ const io = require('socket.io')(server);
 
 const utils = require('./utils/util')
 
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
