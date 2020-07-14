@@ -1,8 +1,12 @@
 ﻿const express = require('express');
 const app = express();
 
+// 开启GZIP
+const compression = require('compression');
+app.use(compression());
+
 // 添加静态资源目录
-app.use(express.static('static'))
+app.use(express.static('static'));
 
 const https = require('https');
 const fs = require('fs');
