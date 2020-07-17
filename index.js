@@ -5,8 +5,10 @@ const app = express();
 const compression = require('compression');
 app.use(compression());
 
-// 添加静态资源目录
+// 添加静态资源目录 并 解决刷新404
+const history = require('connect-history-api-fallback');
 app.use(express.static('static'));
+app.use(history({ verbose: true, index: '/'}));
 
 const https = require('https');
 const fs = require('fs');
@@ -27,7 +29,7 @@ const io = require('socket.io')(server);
 
 const utils = require('./utils/util')
 
-app.get('*', function (req, res) {
+app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
