@@ -4,12 +4,17 @@ import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as compression from 'compression';
 import * as history from 'connect-history-api-fallback';
+import { RedisIoAdapter } from './redis-io-adapter';
+
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   // 开启Ｇzip
   app.use(compression());
+
+  // 配置websocket 负载均衡
+  app.useWebSocketAdapter(new RedisIoAdapter(app));
 
   // 配置跨域
   app.enableCors();
