@@ -73,3 +73,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
   Nest is [MIT licensed](LICENSE).
+  
+## 约定
+- 前端路径不能包含 api
+- 后端api路径前缀必须为 api
