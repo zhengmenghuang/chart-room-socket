@@ -1,7 +1,7 @@
 {
-  "name": "nfo-socket",
+  "name": "chart-room-socket",
   "version": "0.0.1",
-  "description": "雀巢母婴营养e学界直播socket",
+  "description": "在线聊天室socket",
   "dependencies": {
     "@types/node": "^14.0.20",
     "compression": "^1.7.4",
