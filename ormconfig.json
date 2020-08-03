@@ -1,0 +1,10 @@
+{
+  "type": "mysql",
+  "host": "llxhzm.rwlb.rds.aliyuncs.com",
+  "port": 3306,
+  "username": "llxhzm",
+  "password": "Llxhzm2016",
+  "database": "chart",
+  "entities": [],
+  "synchronize": true
+}
