@@ -4,14 +4,29 @@ import { SocketModule } from './socket/socket.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client'),
     }),
-    TypeOrmModule.forRoot(),
-    SocketModule
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'llxhzm.rwlb.rds.aliyuncs.com',
+      port: 3306,
+      username: 'llxhzm',
+      password: 'Llxhzm2016',
+      database: 'chart',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      // synchronize: true,
+      autoLoadEntities: true,
+      logging: true,
+      retryAttempts: 3,
+      maxQueryExecutionTime: 1000
+    }),
+    SocketModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [],
