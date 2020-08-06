@@ -4,6 +4,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import * as compression from 'compression';
 import * as history from 'connect-history-api-fallback';
 import { RedisIoAdapter } from './redis-io-adapter';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 
 async function bootstrap() {
@@ -33,6 +34,16 @@ async function bootstrap() {
       }
     ]
   }));
+
+  // 配置 Swagger
+  const options = new DocumentBuilder()
+    .setTitle('Chart example')
+    .setDescription('The chart API description')
+    .setVersion('1.0')
+    .addTag('chart')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(3000);
 }
