@@ -4,7 +4,9 @@
 
 import { WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Server } from 'socket.io';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('socket')
 @WebSocketGateway({ namespace: 'socket' })
 export class SocketController {
   @WebSocketServer() server: Server;

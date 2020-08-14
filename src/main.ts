@@ -27,7 +27,7 @@ async function bootstrap() {
     index: '/',
     rewrites: [
       {
-        from: /^\/api\/.*$/,
+        from: /(^\/api\/|^\/api-json\/).*$/,
         to: function(context) {
           return context.parsedUrl.path
         }
@@ -40,7 +40,7 @@ async function bootstrap() {
     .setTitle('Chart example')
     .setDescription('The chart API description')
     .setVersion('1.0')
-    .addTag('chart')
+    .addTag('app')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
