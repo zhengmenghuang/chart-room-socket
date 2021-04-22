@@ -16,7 +16,7 @@ const httpsOption = {
 	key: fs.readFileSync('./https/4391411_www.llxhzm.xyz.key'),
 	cert: fs.readFileSync('./https/4391411_www.llxhzm.xyz.pem')
 };
-const port = 6001;
+const port = 443;
 
 const server = https.Server(httpsOption, app);
 
