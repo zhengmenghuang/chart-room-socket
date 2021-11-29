@@ -10,22 +10,22 @@ const history = require('connect-history-api-fallback');
 app.use(express.static('static'));
 app.use(history({ verbose: true, index: '/'}));
 
-const https = require('https');
-const fs = require('fs');
-const httpsOption = {
-	key: fs.readFileSync('./https/www.llxhzm.top.key'),
-	cert: fs.readFileSync('./https/www.llxhzm.top.pem')
-};
-const port = 443;
+// const https = require('https');
+// const fs = require('fs');
+// const httpsOption = {
+// 	key: fs.readFileSync('./https/www.llxhzm.top.key'),
+// 	cert: fs.readFileSync('./https/www.llxhzm.top.pem')
+// };
+// const port = 443;
+//
+// const server = https.Server(httpsOption, app);
 
-const server = https.Server(httpsOption, app);
+// 本地开发
+const http = require('http');
+const port = 6001;
+const server = http.Server(app);
 
-// // 本地开发
-// const http = require('http');
-// const port = 6001;
-// const server = http.Server(app);
-
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, { cors:true });
 
 const utils = require('./utils/util')
 
@@ -77,7 +77,7 @@ io.on('connection', function (socket) {
       type: 'join',
       value: {
         ...info,
-        count: io.sockets.adapter.rooms[roomId].length
+        count: io.sockets.adapter.rooms.get(roomId).size
       }
     });
   });
@@ -89,7 +89,7 @@ io.on('connection', function (socket) {
       value: {
         ...info,
         time: utils.getNowTimeParse(),
-        count: io.sockets.adapter.rooms[roomId] ? io.sockets.adapter.rooms[roomId].length : 0
+        count: io.sockets.adapter.rooms.get(roomId) ? io.sockets.adapter.rooms.get(roomId).size : 0
       }
     });
   });
