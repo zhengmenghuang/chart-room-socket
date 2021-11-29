@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[7],{"933t":function(t,n,e){"use strict";e.r(n);e("q1tI");var i=e("nKUr"),a=()=>Object(i["jsx"])("div",{children:"tab2"});a.title="tab2",n["default"]=a}}]);
