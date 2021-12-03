@@ -50,7 +50,7 @@ export class SocketController {
           type: 'join',
           value: {
             ...info,
-            count: this.server.clients().adapter.rooms[roomId].length
+            // count: this.server.clients().adapter.rooms[roomId].length
           }
         });
       });
@@ -62,7 +62,7 @@ export class SocketController {
           value: {
             ...info,
             time: this.getNowTimeParse(),
-            count: this.server.clients().adapter.rooms[roomId]?.length || 0
+            // count: this.server.clients().adapter.rooms[roomId]?.length || 0
           }
         });
       });

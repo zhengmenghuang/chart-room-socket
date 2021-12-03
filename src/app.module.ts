@@ -15,7 +15,7 @@ import { UserModule } from './user/user.module';
       type: 'mysql',
       host: '119.29.159.51',
       port: 3306,
-      username: 'chat',
+      username: 'root',
       password: 'llxhzm.2016',
       database: 'chat',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
