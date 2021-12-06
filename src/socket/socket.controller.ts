@@ -7,7 +7,7 @@ import { Server } from 'socket.io';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('socket')
-@WebSocketGateway({ namespace: 'socket' })
+@WebSocketGateway({ namespace: 'socket', cors: true })
 export class SocketController {
   @WebSocketServer() server: Server;
   chartRecord = new Map();
@@ -44,6 +44,7 @@ export class SocketController {
 
       // 监听用户加入 先发历史记录 再发上线记录
       socket.on('join', m => {
+        console.log(47, this.server)
         info = m;
         socket.emit('historyRecord', this.chartRecord.get(roomId));
         this.server.to(roomId).emit('msg', {
